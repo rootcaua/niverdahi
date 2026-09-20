@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aniversário da Hilary🎂</title>
+    <link rel="stylesheet" href="game.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <section class="game-card" aria-label="Mini jogo da surpresa">
+        <header class="hud">
+          <div>
+            <span class="label">Pontos</span>
+            <strong id="score">0</strong>
+          </div>
+          <div>
+            <span class="label">Vidas</span>
+            <div class="lives" id="lives" aria-label="Vidas restantes"></div>
+          </div>
+          <div>
+            <span class="label">Meta</span>
+            <strong id="goal">50</strong>
+          </div>
+        </header>
+
+        <div class="game-area" id="game-area">
+          <div class="cloud cloud-one"></div>
+          <div class="cloud cloud-two"></div>
+          <div class="basket" id="basket" aria-hidden="true">
+            <span></span>
+          </div>
+
+          <div class="start-panel" id="start-panel">
+            <h1>pegue os corações</h1>
+            <p>Faça <strong id="start-goal">50 pontos</strong> para desbloquear a surpresa.</p>
+            <p class="hint">Pegue corações e flores, desvie dos espinhos. Você tem 3 vidas. De vez em quando aparece um 🧲 ímã ou um 🛡️ escudo — vale a pena pegar.</p>
+            <button id="start-button" type="button">Começar</button>
+          </div>
+
+          <div class="game-over-panel" id="game-over-panel" hidden>
+            <h2>quase!</h2>
+            <p>PARA DE SER RUIM! Mas eu confio em vc, tenta de novo.</p>
+            <button id="retry-button" type="button">Tentar de novo</button>
+          </div>
+
+          <div class="unlock-panel" id="unlock-panel" hidden>
+            <h2>surpresa liberada</h2>
+            <p>Agora só falta responder uma coisinha <3.</p>
+            <a href="pergunta.html">Continuar</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>

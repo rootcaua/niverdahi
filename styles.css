@@ -1,0 +1,733 @@
+:root {
+  --paper: #fff7ec;
+  --ink: #5e5149;
+  --brown: #8c4309;
+  --pink: #ff8db7;
+  --pink-deep: #f24578;
+  --red: #dc174c;
+  --yellow: #f5cf2c;
+  --stem: #a9a85d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  display: grid;
+  min-height: 100vh;
+  min-height: 100dvh;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.9), transparent 26rem),
+    linear-gradient(135deg, #fffaf3, #fde8c6);
+  color: var(--ink);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.card {
+  position: relative;
+  width: min(100vw, 1080px);
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  min-height: min(100dvh, 680px);
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(255, 252, 247, 0.7), rgba(255, 248, 237, 0.78)),
+    var(--paper);
+  box-shadow: 0 24px 80px rgba(77, 35, 7, 0.24);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(rgba(99, 58, 21, 0.08) 0.6px, transparent 0.7px),
+    radial-gradient(rgba(255, 255, 255, 0.5) 0.8px, transparent 1px);
+  background-position:
+    0 0,
+    9px 13px;
+  background-size:
+    18px 18px,
+    24px 24px;
+  opacity: 0.5;
+}
+
+.message {
+  position: relative;
+  z-index: 6;
+  width: 48%;
+  padding: clamp(1.3rem, 3.2vw, 2.35rem);
+}
+
+h1 {
+  position: absolute;
+  left: 3%;
+  right: 52%;
+  top: clamp(0.7rem, 2vw, 1.55rem);
+  z-index: 7;
+  margin: 0;
+  color: var(--brown);
+  font-family: "Brush Script MT", "Segoe Script", cursive;
+  font-size: clamp(3.2rem, 7.4vw, 5.4rem);
+  font-weight: 400;
+  line-height: 0.86;
+  text-align: left;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.8);
+}
+
+.dedication {
+  margin-top: clamp(9rem, 15vw, 11.5rem);
+  font-size: clamp(1.05rem, 2.6vw, 1.95rem);
+  line-height: 1.35;
+}
+
+.dedication p {
+  margin: 0 0 clamp(1.2rem, 2.6vw, 2.3rem);
+}
+
+.wish {
+  color: #6b4534;
+  font-weight: 600;
+}
+
+.love-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  max-width: 100%;
+  margin-top: clamp(-0.35rem, -0.4vw, 0rem);
+  padding: 0.55rem 0.85rem;
+  border: 1px solid rgba(140, 67, 9, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 244, 231, 0.76);
+  color: #7a4734;
+  font-size: clamp(0.86rem, 1.9vw, 1.16rem);
+  font-weight: 600;
+  line-height: 1;
+  box-shadow: 0 8px 22px rgba(149, 77, 26, 0.08);
+}
+
+.love-note-heart {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  transform: rotate(45deg);
+  flex: 0 0 auto;
+  border-radius: 0.18rem;
+  background: #f24578;
+  animation: heartBeat 2.8s ease-in-out infinite;
+}
+
+.love-note-heart::before,
+.love-note-heart::after {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #f24578;
+}
+
+.love-note-heart::before {
+  left: -0.48rem;
+}
+
+.love-note-heart::after {
+  top: -0.48rem;
+}
+
+.secret-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #a06a4a;
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 0.75;
+  border-bottom: 1px dashed rgba(140, 67, 9, 0.4);
+  transition: opacity 160ms ease;
+}
+
+.secret-link:hover,
+.secret-link:focus-visible {
+  opacity: 1;
+}
+
+.tree-wrap {
+  position: absolute;
+  right: 1%;
+  bottom: 19%;
+  width: min(54%, 560px);
+  height: 64%;
+}
+
+.heart-tree,
+.heart-leaves {
+  position: absolute;
+  left: 50%;
+  bottom: 29%;
+  height: 70%;
+  width: auto;
+  aspect-ratio: 1.14 / 1;
+  max-width: 100%;
+  transform: translateX(-50%);
+  transform-origin: 50% 62%;
+}
+
+.heart-tree {
+  z-index: 4;
+  animation: breathe 4.6s ease-in-out infinite;
+}
+
+.heart-leaves {
+  z-index: 3;
+  animation: breathe 5.2s ease-in-out infinite;
+}
+
+.heart-leaves::before,
+.heart-leaves::after {
+  content: "";
+  position: absolute;
+  inset: 12% 10% 10%;
+  border-radius: 50% 50% 45% 45%;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.heart-leaves::before {
+  background:
+    radial-gradient(circle at 22% 34%, rgba(255, 111, 156, 0.55) 0 8px, transparent 9px),
+    radial-gradient(circle at 38% 24%, rgba(255, 179, 202, 0.6) 0 7px, transparent 8px),
+    radial-gradient(circle at 60% 25%, rgba(242, 69, 120, 0.46) 0 8px, transparent 9px),
+    radial-gradient(circle at 78% 38%, rgba(255, 141, 183, 0.58) 0 9px, transparent 10px),
+    radial-gradient(circle at 31% 58%, rgba(255, 196, 214, 0.7) 0 8px, transparent 9px),
+    radial-gradient(circle at 52% 52%, rgba(255, 111, 156, 0.45) 0 10px, transparent 11px),
+    radial-gradient(circle at 68% 61%, rgba(232, 74, 130, 0.42) 0 8px, transparent 9px);
+}
+
+.heart-leaves::after {
+  background:
+    radial-gradient(circle at 46% 34%, rgba(255, 196, 214, 0.65) 0 8px, transparent 9px),
+    radial-gradient(circle at 28% 72%, rgba(255, 141, 183, 0.52) 0 9px, transparent 10px),
+    radial-gradient(circle at 56% 75%, rgba(242, 69, 120, 0.42) 0 8px, transparent 9px),
+    radial-gradient(circle at 76% 72%, rgba(255, 179, 202, 0.56) 0 10px, transparent 11px),
+    radial-gradient(circle at 49% 89%, rgba(255, 111, 156, 0.5) 0 9px, transparent 10px);
+}
+
+.trunk {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 1;
+  width: 13%;
+  height: 58%;
+  transform: translateX(-45%);
+  border-radius: 70% 45% 2px 2px;
+  clip-path: polygon(36% 0, 62% 0, 76% 100%, 10% 100%);
+  background:
+    linear-gradient(90deg, rgba(93, 34, 0, 0.42), transparent 34%),
+    linear-gradient(90deg, #7a3300 0%, #9d4f0b 52%, #b46314 100%);
+}
+
+.branches {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 34%;
+  z-index: 2;
+  width: 100%;
+  height: 58%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.trunk::after {
+  content: "";
+  position: absolute;
+  left: 48%;
+  top: 7%;
+  width: 22%;
+  height: 88%;
+  border-radius: 50%;
+  background: linear-gradient(rgba(255, 185, 73, 0.2), transparent 70%);
+}
+
+.branch {
+  fill: none;
+  stroke: rgba(126, 52, 2, 0.82);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 1px 0 rgba(88, 32, 0, 0.18));
+}
+
+.branch-main {
+  stroke-width: 18;
+}
+
+.branch-left,
+.branch-right {
+  stroke-width: 14;
+}
+
+.branch-top-left,
+.branch-top-right {
+  stroke-width: 10;
+}
+
+.leaf {
+  position: absolute;
+  width: var(--leaf-width);
+  height: var(--leaf-height);
+  transform: translate(-50%, -50%) rotate(var(--turn));
+  border-radius: 78% 12% 78% 16%;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.24), transparent 38%),
+    var(--leaf-color);
+  opacity: var(--opacity);
+  animation: leafIn 620ms ease-out both;
+  animation-delay: var(--delay);
+}
+
+.leaf.moving {
+  animation:
+    leafIn 620ms ease-out both,
+    leafFlutter var(--speed) ease-in-out infinite;
+  animation-delay: var(--delay), calc(var(--delay) + 700ms);
+}
+
+.blossom {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  transform: translate(-50%, -50%) rotate(var(--turn));
+  border-radius: 50%;
+  animation: bloom 700ms ease-out both;
+  animation-delay: var(--delay);
+}
+
+.blossom::before,
+.blossom::after {
+  content: "";
+  position: absolute;
+  inset: 20%;
+  border-radius: 50% 50% 45% 45%;
+  background: var(--color);
+  box-shadow:
+    0 calc(var(--size) * -0.26) 0 var(--color),
+    calc(var(--size) * 0.25) calc(var(--size) * -0.06) 0 var(--color),
+    calc(var(--size) * 0.16) calc(var(--size) * 0.25) 0 var(--color),
+    calc(var(--size) * -0.18) calc(var(--size) * 0.22) 0 var(--color),
+    calc(var(--size) * -0.28) calc(var(--size) * -0.06) 0 var(--color);
+}
+
+.blossom::after {
+  inset: 42%;
+  background: #f7d448;
+  box-shadow: 0 0 0 1px rgba(110, 72, 10, 0.08);
+}
+
+.fallen {
+  position: absolute;
+  z-index: 4;
+  width: clamp(18px, 3vw, 34px);
+  height: clamp(18px, 3vw, 34px);
+  bottom: 10%;
+  border-radius: 50%;
+  background: var(--pink-deep);
+  box-shadow:
+    8px 1px 0 -3px var(--red),
+    -4px -5px 0 -5px var(--yellow);
+  animation: bob 3.2s ease-in-out infinite;
+}
+
+.fallen-one {
+  left: 7%;
+  background: var(--pink);
+}
+
+.fallen-two {
+  left: 38%;
+  animation-delay: -1.4s;
+}
+
+.fallen-three {
+  right: 11%;
+  background: var(--yellow);
+  animation-delay: -0.7s;
+}
+
+.ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  height: 26%;
+  border-top: 0;
+  background:
+    radial-gradient(ellipse at 18% 82%, rgba(255, 141, 183, 0.2) 0 70px, transparent 72px),
+    radial-gradient(ellipse at 58% 90%, rgba(246, 197, 96, 0.18) 0 86px, transparent 88px),
+    radial-gradient(ellipse at 88% 80%, rgba(255, 179, 202, 0.22) 0 62px, transparent 64px),
+    linear-gradient(180deg, rgba(255, 250, 243, 0.1) 0%, rgba(255, 234, 205, 0.46) 60%, rgba(242, 218, 177, 0.55) 100%),
+    radial-gradient(ellipse at 12% 0, rgba(255, 141, 183, 0.18) 0 34px, transparent 35px),
+    radial-gradient(ellipse at 76% 0, rgba(245, 207, 44, 0.16) 0 28px, transparent 29px),
+    linear-gradient(#fffaf3 0%, #fff2dd 100%);
+}
+
+.ground::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 0;
+  right: 0;
+  height: 9px;
+  background:
+    radial-gradient(circle at 9% 50%, #ff8db7 0 5px, transparent 6px),
+    radial-gradient(circle at 23% 50%, #f5cf2c 0 4px, transparent 5px),
+    radial-gradient(circle at 41% 50%, #ff6f9c 0 5px, transparent 6px),
+    radial-gradient(circle at 58% 50%, #d7a5ff 0 4px, transparent 5px),
+    radial-gradient(circle at 74% 50%, #e51b53 0 5px, transparent 6px),
+    radial-gradient(circle at 90% 50%, #ffb3ca 0 5px, transparent 6px),
+    linear-gradient(
+      90deg,
+      rgba(102, 58, 27, 0.04),
+      rgba(102, 58, 27, 0.72) 12%,
+      rgba(102, 58, 27, 0.82) 50%,
+      rgba(102, 58, 27, 0.72) 88%,
+      rgba(102, 58, 27, 0.04)
+    );
+  box-shadow: 0 4px 10px rgba(98, 48, 20, 0.12);
+}
+
+.ground::after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 0;
+  right: 0;
+  height: 18px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 6% 95%, rgba(148, 143, 70, 0.22) 0 2px, transparent 3px),
+    radial-gradient(circle at 18% 78%, rgba(148, 143, 70, 0.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 31% 90%, rgba(148, 143, 70, 0.16) 0 2px, transparent 3px),
+    radial-gradient(circle at 44% 76%, rgba(148, 143, 70, 0.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 63% 91%, rgba(148, 143, 70, 0.2) 0 2px, transparent 3px),
+    radial-gradient(circle at 82% 80%, rgba(148, 143, 70, 0.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 94% 93%, rgba(148, 143, 70, 0.16) 0 2px, transparent 3px),
+    radial-gradient(ellipse at 18% 70%, rgba(255, 141, 183, 0.5) 0 10px, transparent 11px),
+    radial-gradient(ellipse at 48% 60%, rgba(255, 111, 156, 0.38) 0 8px, transparent 9px),
+    radial-gradient(ellipse at 81% 70%, rgba(245, 207, 44, 0.45) 0 9px, transparent 10px);
+  opacity: 0.75;
+}
+
+.flower-bed {
+  position: absolute;
+  inset: 0;
+  --bed-scale: 0.86;
+}
+
+.stem {
+  position: absolute;
+  bottom: 0;
+  left: var(--left);
+  width: 4px;
+  height: calc(var(--height) * var(--bed-scale, 1));
+  transform: rotate(var(--lean));
+  transform-origin: bottom center;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #777c2e, var(--stem), #c0b75f);
+  animation: grassSway var(--speed) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.stem::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(var(--flower) * -0.62);
+  width: var(--flower);
+  height: var(--flower);
+  transform: translateX(-50%) rotate(var(--spin));
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, #d8cf65 0 12%, transparent 13%),
+    radial-gradient(ellipse at 50% 12%, var(--light) 0 22%, transparent 23%),
+    radial-gradient(ellipse at 87% 36%, var(--head) 0 24%, transparent 25%),
+    radial-gradient(ellipse at 75% 82%, var(--deep) 0 24%, transparent 25%),
+    radial-gradient(ellipse at 24% 82%, var(--light) 0 24%, transparent 25%),
+    radial-gradient(ellipse at 13% 36%, var(--head) 0 24%, transparent 25%);
+  box-shadow:
+    calc(var(--flower) * 0.18) calc(var(--flower) * 0.1) 0 calc(var(--flower) * -0.12) rgba(232, 38, 101, 0.42),
+    calc(var(--flower) * -0.16) calc(var(--flower) * 0.12) 0 calc(var(--flower) * -0.14) rgba(255, 196, 214, 0.65);
+}
+
+.stem::after {
+  content: "";
+  position: absolute;
+  left: var(--leaf-side);
+  top: var(--leaf-top);
+  width: 22px;
+  height: 10px;
+  transform: rotate(var(--leaf-tilt));
+  transform-origin: left center;
+  border-radius: 80% 12% 80% 18%;
+  background: rgba(159, 169, 80, 0.62);
+}
+
+.petals {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  top: -8%;
+  left: var(--left);
+  width: var(--size);
+  height: calc(var(--size) * 0.72);
+  border-radius: 70% 30% 70% 30%;
+  background: rgba(255, 123, 160, 0.75);
+  animation: fall var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes breathe {
+  50% {
+    transform: translateX(-50%) scale(1.018);
+  }
+}
+
+@keyframes bloom {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--turn)) scale(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--turn)) scale(1);
+  }
+}
+
+@keyframes leafIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--turn)) scale(0.2);
+  }
+  to {
+    opacity: var(--opacity);
+    transform: translate(-50%, -50%) rotate(var(--turn)) scale(1);
+  }
+}
+
+@keyframes leafFlutter {
+  50% {
+    transform: translate(calc(-50% + var(--float)), calc(-50% - 7px)) rotate(calc(var(--turn) + var(--tilt)));
+  }
+}
+
+@keyframes heartBeat {
+  45% {
+    transform: rotate(45deg) scale(1.12);
+  }
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(-8px) rotate(8deg);
+  }
+}
+
+@keyframes grassSway {
+  50% {
+    transform: rotate(calc(var(--lean) * -0.55));
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translate3d(var(--drift), 118vh, 0) rotate(560deg);
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 28px 0;
+  }
+
+  .card {
+    width: min(94vw, 480px);
+    aspect-ratio: auto;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    border-radius: 22px;
+  }
+
+  .card::before {
+    border-radius: 22px;
+  }
+
+  h1 {
+    position: static;
+    padding: 1.7rem 1.2rem 0.3rem;
+    font-size: clamp(2.4rem, 11vw, 3.4rem);
+    text-align: center;
+  }
+
+  .message {
+    position: static;
+    width: 100%;
+    padding: 0 1.3rem;
+  }
+
+  .dedication {
+    width: 100%;
+    margin-top: 0;
+    padding-right: 0;
+    font-size: clamp(1rem, 4.2vw, 1.2rem);
+    line-height: 1.42;
+  }
+
+  .dedication p {
+    margin-bottom: 1.1rem;
+  }
+
+  .love-note {
+    margin-top: 0.3rem;
+  }
+
+  .tree-wrap {
+    position: relative;
+    inset: auto;
+    right: auto;
+    bottom: auto;
+    width: min(76%, 300px);
+    height: 290px;
+    margin: 0.6rem auto 0;
+    opacity: 1;
+  }
+
+  .ground {
+    position: relative;
+    inset: auto;
+    height: 130px;
+    margin-top: -26px;
+  }
+
+  .flower-bed {
+    --bed-scale: 0.7;
+  }
+
+  .petals {
+    height: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  h1 {
+    font-size: clamp(2.1rem, 12vw, 2.9rem);
+  }
+
+  .message {
+    padding-inline: 1rem;
+  }
+
+  .dedication {
+    font-size: 0.98rem;
+    line-height: 1.36;
+  }
+
+  .love-note {
+    font-size: 0.86rem;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .tree-wrap {
+    width: 82%;
+    height: 250px;
+  }
+
+  .ground {
+    height: 110px;
+  }
+
+  .flower-bed {
+    --bed-scale: 0.62;
+  }
+}
+
+@media (min-width: 1180px) {
+  .card {
+    border-radius: 10px;
+  }
+}
+
+@media (max-height: 720px) and (min-width: 761px) {
+  .card {
+    width: min(100vw, 960px);
+    min-height: 100dvh;
+  }
+
+  .dedication {
+    margin-top: clamp(8.8rem, 18vw, 11.5rem);
+    font-size: clamp(0.98rem, 2.25vw, 1.55rem);
+  }
+
+  .dedication p {
+    margin-bottom: clamp(0.8rem, 1.8vw, 1.45rem);
+  }
+
+  .tree-wrap {
+    bottom: 17%;
+    height: 62%;
+  }
+
+  .ground {
+    height: 24%;
+  }
+
+  .flower-bed {
+    --bed-scale: 0.8;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 520px) {
+  body {
+    overflow: auto;
+  }
+
+  .card {
+    min-height: 620px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leaf,
+  .leaf.moving,
+  .blossom,
+  .petal,
+  .stem,
+  .fallen,
+  .heart-tree,
+  .heart-leaves,
+  .love-note-heart {
+    animation: none !important;
+  }
+}
